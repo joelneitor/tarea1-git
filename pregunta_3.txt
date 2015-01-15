@@ -1,1 +1,3 @@
 Pregunta 3
+En un contexto de la herramienta de control de versiones Git: definir 'working directory',
+'index', 'local repo’, 'remote repo', 'dirty working tree' y 'merge confict’.
