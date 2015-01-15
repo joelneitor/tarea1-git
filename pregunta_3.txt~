@@ -1,1 +1,17 @@
 Pregunta 3
+En un contexto de la herramienta de control de versiones Git: definir 'working directory',
+'index', 'local repo’, 'remote repo', 'dirty working tree' y 'merge confict’.
+
+Working directory:
+Es el arbol primario del repositorio local que contiene los archivos. 
+
+Index:
+Es el arbol secundario del repositorio que actua como una zona intermediaria.
+
+Local repo: 
+
+Remote repo: 
+
+Dirty working tree: 
+
+Merge confict:
