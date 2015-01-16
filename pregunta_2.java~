@@ -1,1 +1,106 @@
-s
+Utilizando el diccionario SOWPODS de Scrabble (https://scrabblehelper.googlecode.com/
+svn-history/r20/trunk/ScrabbleHelper/src/dictionaries/sowpods.txt) escriba un programa (en
+su lenguaje de preferencia) que determine cuáles letras nunca aparecen repetidas de forma
+consecutiva (AA, BB, CC, etc). Por ejemplo, la letra “D” aparece repetida pues la palabra
+“ADD” contiene la sub-secuencia “DD”.
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.LinkedList;
+
+/**
+ *
+ * @author joel
+ */
+public class Pregunta_2 {
+
+
+    
+    public static void CargarArchivo(String dirArchivo)
+    throws IOException,ArrayIndexOutOfBoundsException,IndexOutOfBoundsException {
+        BufferedReader in = new BufferedReader(new FileReader(dirArchivo));	
+        String s;
+        String[] tok;
+        FileWriter fichero=null;
+        PrintWriter pw=null;
+        try {
+            s = in.readLine(); 
+            tok=s.split("\\b\\s");
+            int NumPruebas= Integer.parseInt(tok[0]);
+
+            for(int z=1; z<=NumPruebas;z++){
+                s = in.readLine(); 
+		if (s.equals("")){
+		    s = in.readLine();	
+		}
+                tok=s.split("\\b\\s");
+                int NumVertices = Integer.parseInt(tok[0]);
+                int NumAristas=Integer.parseInt(tok[1]);     
+                Vertice[] vertices= new Vertice[NumVertices];
+                Arista[] aristas= new Arista[NumAristas]; 
+                int j=1;
+                int k=0;
+                while ((s = in.readLine()) != null ){
+                    tok=s.split("\\b\\s");
+                    vertices[k]= new Vertice(k,tok[0],Integer.parseInt(tok[1]));
+                    
+                    k++;    
+                    
+                    if (j==NumVertices){
+                        break;
+                    }
+                    j++;
+                }
+                k=0;
+                j=1;
+                while ((s = in.readLine()) != null ){
+                    tok=s.split("\\b\\s");
+                    aristas[k]= new Arista(obtenerIdentificador(tok[0],vertices),obtenerIdentificador(tok[1],vertices),Integer.parseInt(tok[2]));
+                   
+                    k++; 
+                    if (j==NumAristas){
+                        break;
+                    }
+                    j++;
+                }
+                if (z==2){
+                    fichero = new FileWriter("Salida.txt",true);
+                }else{
+                    fichero = new FileWriter("Salida.txt");
+                }    
+                pw = new PrintWriter(fichero);
+
+		
+                BellmanFord(vertices,aristas,vertices[0].ObtenerId(),fichero,pw);
+                pw.println();
+                fichero.close();
+            }
+
+
+        }catch (IOException e){
+        System.out.println("Error: no se encuentra el archivo de lectura");
+        } catch (ArrayIndexOutOfBoundsException e1) {
+        System.out.println("Error: formato incorrecto del archivo");
+        } catch (IndexOutOfBoundsException e2) {
+        System.out.println("Error: formato incorrecto del archivo");
+        }
+    }
+
+    public static void main(String[] args) {
+        if (args.length !=1) {
+            System.out.println("Error en la entrada: java Pregunta_2 <archivo>");
+            System.exit(1);
+        }
+        try {	
+            CargarGrafo(args[0]);
+    
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+}

@@ -6,4 +6,6 @@ hash: b85cfde5625636f66128617489012f4422911d20
 
 ¿Para qué sería útil este hash?
 
+Es util para identificar un commit de otro.
+
 
