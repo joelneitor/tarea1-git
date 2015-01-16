@@ -9,9 +9,12 @@ Index:
 Es el arbol secundario del repositorio que actua como una zona intermediaria.
 
 Local repo: 
+Es tu area de trabajo privada, donde puedes modificar los archivos sin alterar los del repositorio remoto.
 
 Remote repo: 
+Es en donde esta alojado tu proyecto, en el Internet o la red. 
 
 Dirty working tree: 
 
 Merge confict:
+Es cuando Git no puede decidir que rama (branch) tiene precedencia sobre otra, al momento de fusionarlas.  

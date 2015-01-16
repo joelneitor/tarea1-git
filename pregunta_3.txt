@@ -17,3 +17,4 @@ Es en donde esta alojado tu proyecto, en el Internet o la red.
 Dirty working tree: 
 
 Merge confict:
+Es cuando Git no puede decidir que rama (branch) tiene precedencia sobre otra, al momento de fusionarlas.  
